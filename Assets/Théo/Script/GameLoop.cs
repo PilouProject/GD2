@@ -138,8 +138,8 @@ public class GameLoop : MonoBehaviour
         else if (playerTurn == true)
         {
             resolve();
-            if (player1.hp <= 0 || player2.hp <= 0)
-                victoryScreen();
+            //if (player1.hp <= 0 || player2.hp <= 0)
+            //    victoryScreen();
             Debug.Log("Turn 1 player");
             player1.resetStat();
             player2.resetStat();
