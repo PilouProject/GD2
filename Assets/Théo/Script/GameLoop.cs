@@ -39,38 +39,47 @@ namespace CardFight
                 case "knuckles":
                     attackPlayer.strenght += 4;
                     attackPlayer.stance = 1;
+                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "baseball":
                     attackPlayer.strenght += 6;
                     attackPlayer.stance = 1;
+                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "heal":
                     attackPlayer.hp += 3;
                     attackPlayer.stance = 2;
+                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "thorns":
                     attackPlayer.thornsup = true;
                     attackPlayer.stance = 2;
+                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "taunt":
                     attackPlayer.superBar -= 1;
                     attackPlayer.stance = 3;
+                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "remove":
                     defensePlayer.hand.RemoveAt(Random.Range(0, defensePlayer.hand.Count - 1));
                     attackPlayer.stance = 3;
+                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "weakness":
                     defenseTag.Add("weakness");
                     attackPlayer.stance = 3;
+                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "bite":
                     defenseTag.Add("bite");
                     attackPlayer.stance = 1;
+                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "enrage":
                     attackTag.Add("enrage");
                     attackPlayer.stance = 2;
+                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "stanceAttack":
                     attackPlayer.stance = 1;
