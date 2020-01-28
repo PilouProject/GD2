@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerClass : MonoBehaviour
+public class PlayerClass
 {
     public int hp;
     public List<string> deck;

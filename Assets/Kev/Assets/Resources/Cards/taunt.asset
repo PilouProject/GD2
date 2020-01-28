@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8221773caf2f8bc439ec1d1d36f823fb, type: 3}
-  m_Name: Griffure
+  m_Name: taunt
   m_EditorClassIdentifier: 
-  cardArt: {fileID: 21300000, guid: 4621fc13d254a7a4f86dd93e80e2b3e9, type: 3}
+  cardArt: {fileID: 21300000, guid: b5e18b7747fb9064589e30c2579bc286, type: 3}

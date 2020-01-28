@@ -10,11 +10,10 @@ namespace CardFight
     {
         public GameObject cardPrefab;
         List<GameObject> cardHand = new List<GameObject>();
-        List<string> tmp = new List<string> { "Griffure", "LaBatte", "PoingAmericain", "Moquerie" };
 
         void Start()
         {
-            InstantiateHand();
+
         }
 
         void Update()
@@ -22,12 +21,23 @@ namespace CardFight
 
         }
 
-        public void InstantiateHand()
+        public void InstantiateHand(List<string> cardNames)
         {
-            foreach (string str in tmp)
+            foreach (string name in cardNames)
             {
                 cardHand.Add((Instantiate(cardPrefab, this.transform) as GameObject));
-                cardHand[cardHand.Count - 1].GetComponent<CardHandler>().LoadArt(str);
+                cardHand[cardHand.Count - 1].name = name;
+                cardHand[cardHand.Count - 1].GetComponent<CardHandler>().LoadArt(name);
+            }
+        }
+
+        public void DestroyHand()
+        {
+            if (cardHand.Count != 0)
+            {
+                foreach (GameObject card in cardHand)
+                    Destroy(card);
+                cardHand.Clear();
             }
         }
     }

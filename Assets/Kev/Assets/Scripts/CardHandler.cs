@@ -16,7 +16,7 @@ namespace CardFight
 
         void Start()
         {
-
+            this.GetComponent<Button>().onClick.AddListener(GameObject.Find("/GameLoop").GetComponent<GameLoop>().handleCard);
         }
 
         void Update()
