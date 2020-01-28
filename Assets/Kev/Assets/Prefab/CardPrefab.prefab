@@ -82,7 +82,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5677679686285771341}
-  - component: {fileID: 8847177010103620661}
   - component: {fileID: 8673958568741259019}
   m_Layer: 5
   m_Name: CardPrefab
@@ -111,19 +110,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 787, y: 1087}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8847177010103620661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5677679686285771340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
 --- !u!114 &8673958568741259019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,4 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10083634111a50348bf71ba459771802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 5677679686285771340}
   cardArt: {fileID: 5677679686225471343}
