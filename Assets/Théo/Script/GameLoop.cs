@@ -16,6 +16,8 @@ namespace CardFight
         List<string> tagsplayer2;
         public bool playerTurn;
         public GameObject handObject;
+        public GameObject Anim_player1;
+        public GameObject Anim_player2;
 
         // Start is called before the first frame update
         void Start()
