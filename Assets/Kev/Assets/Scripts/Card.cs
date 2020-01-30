@@ -8,5 +8,6 @@ namespace CardFight
     public class Card : ScriptableObject
     {
         public Sprite cardArt;
+        public Sprite cardSelected;
     }
 }

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: knuckles
   m_EditorClassIdentifier: 
   cardArt: {fileID: 21300000, guid: 1e33e6acd34094943812f5b332e46423, type: 3}
+  cardSelected: {fileID: 21300000, guid: 20c6db5cb0faca544be982048708cc6f, type: 3}

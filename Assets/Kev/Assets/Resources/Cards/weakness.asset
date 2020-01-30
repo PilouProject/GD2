@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: weakness
   m_EditorClassIdentifier: 
   cardArt: {fileID: 21300000, guid: b6b460efdc4c32242be8b8c03c473337, type: 3}
+  cardSelected: {fileID: 21300000, guid: fa90540f6a1de9c4d9eeeae78cb6dae6, type: 3}

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: bite
   m_EditorClassIdentifier: 
   cardArt: {fileID: 21300000, guid: 4621fc13d254a7a4f86dd93e80e2b3e9, type: 3}
+  cardSelected: {fileID: 21300000, guid: 20c6db5cb0faca544be982048708cc6f, type: 3}

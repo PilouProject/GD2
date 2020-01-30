@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: taunt
   m_EditorClassIdentifier: 
   cardArt: {fileID: 21300000, guid: b5e18b7747fb9064589e30c2579bc286, type: 3}
+  cardSelected: {fileID: 21300000, guid: fa90540f6a1de9c4d9eeeae78cb6dae6, type: 3}

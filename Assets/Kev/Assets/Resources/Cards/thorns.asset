@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: thorns
   m_EditorClassIdentifier: 
   cardArt: {fileID: 21300000, guid: 2cf34b9e14662884799a2fb05f7da133, type: 3}
+  cardSelected: {fileID: 21300000, guid: 61799636ddf0649478a65d79183a9576, type: 3}

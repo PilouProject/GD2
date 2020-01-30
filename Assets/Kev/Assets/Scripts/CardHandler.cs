@@ -10,9 +10,11 @@ namespace CardFight
     {
         public GameObject   cardPrefab;
         public Image        cardArt;
+        public Image        cardSelected;
         private string      _name;
         private GameObject  _zoom;
         private bool        _isZoom = false;
+        private bool        _isClicked = false;
 
         void Start()
         {
@@ -42,7 +44,15 @@ namespace CardFight
 
         public void OnClick()
         {
-            Debug.Log("Click");
+            if (!_isZoom)
+            {
+                if (_isClicked)
+                    this.transform.GetChild(0).gameObject.SetActive(false);
+                else
+                    this.transform.GetChild(0).gameObject.SetActive(true);
+                this.transform.parent.GetComponent<HandHandler>().UpdateSelectedCard(this.transform.gameObject);
+                _isClicked = !_isClicked;
+            }
         }
 
         public void LoadArt(string name)
@@ -51,6 +61,7 @@ namespace CardFight
                 return;
             _name = name;
             cardArt.sprite = Resources.Load<Card>("Cards/" + name).cardArt;
+            cardSelected.sprite = Resources.Load<Card>("Cards/" + name).cardSelected;
         }
 
         public void LoadZoom(string name)
@@ -60,6 +71,8 @@ namespace CardFight
             _isZoom = true;
             _name = name;
             cardArt.sprite = Resources.Load<Card>("Cards/" + name).cardArt;
+            cardSelected.sprite = null;
+            this.transform.GetChild(0).gameObject.SetActive(false);
             this.transform.position = new Vector3(Screen.width / 2.0f, Screen.height / 2.0f, 0.0f);
             this.transform.localScale = new Vector3(1.25F, 1.25f, 1.25f);
         }

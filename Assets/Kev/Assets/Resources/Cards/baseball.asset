@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: baseball
   m_EditorClassIdentifier: 
   cardArt: {fileID: 21300000, guid: 05237a827fd91c549abfbfdba8bf7ad6, type: 3}
+  cardSelected: {fileID: 21300000, guid: 20c6db5cb0faca544be982048708cc6f, type: 3}

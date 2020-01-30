@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: heal
   m_EditorClassIdentifier: 
   cardArt: {fileID: 21300000, guid: fa678a66cc6d6234fad5e6d0345215d1, type: 3}
+  cardSelected: {fileID: 21300000, guid: 61799636ddf0649478a65d79183a9576, type: 3}
