@@ -1028,6 +1028,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTurn: 0
   handObject: {fileID: 339416332}
+  Anim_player1: {fileID: 327570339}
+  Anim_player2: {fileID: 966977702}
 --- !u!4 &1745287255
 Transform:
   m_ObjectHideFlags: 0
