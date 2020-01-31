@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class SuperHUD : MonoBehaviour
 {
+    public GameObject Electricity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +16,10 @@ public class SuperHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GetComponent<Slider>().value == GetComponent<Slider>().maxValue)
+            Electricity.SetActive(true);
+        else
+            Electricity.SetActive(false);
     }
 
     //function to add or supp a nb of stack of super attack, return false if it's time to "NIQUER DES MERES" 
