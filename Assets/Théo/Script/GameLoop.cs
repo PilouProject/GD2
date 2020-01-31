@@ -106,37 +106,49 @@ namespace CardFight
             switchAction(player1action, player1, player2, tagsplayer1, tagsplayer2);
             switchAction(player2action, player2, player1, tagsplayer2, tagsplayer1);
             //On résout le chi-fu-mi stance = 1 == attaque, stance = 2 == défense, stance = 3 == grab
-            
+
+            Anim_player1.GetComponent<PlayerAnimationController>().handleAnim(player1.stance);
+            Anim_player2.GetComponent<PlayerAnimationController>().handleAnim(player2.stance);
             if (player1.stance == 1 && player2.stance == 2)
             {
                 if (tagsplayer2.Count > 0)
                     tagsplayer2.RemoveAt(tagsplayer2.Count - 1);
                 if (player2.thornsup == true)
+                {
                     player1.hp -= (int)Mathf.Round(player1.strenght * player1.strenghtcoef / 2);
+                    Anim_player1.GetComponent<PlayerAnimationController>().FireHit();
+                }
             }
             else if (player1.stance == 3 && player2.stance == 1 || player1.stance == 2 && player2.stance == 3)
             {
                 if (tagsplayer2.Count > 0)
                     tagsplayer2.RemoveAt(tagsplayer2.Count - 1);
                 player1.hp -= (int)(player2.strenght * player2.strenghtcoef);
+                Anim_player1.GetComponent<PlayerAnimationController>().FireHit();
             }
             else if (player1.stance == 2 && player2.stance == 1)
             {
                 if (tagsplayer1.Count > 0)
                     tagsplayer1.RemoveAt(tagsplayer1.Count - 1);
                 if (player1.thornsup == true)
+                {
                     player2.hp -= (int)Mathf.Round(player2.strenght * player2.strenghtcoef / 2);
+                    Anim_player2.GetComponent<PlayerAnimationController>().FireHit();
+                }
             }
             else if (player1.stance == 1 && player2.stance == 3 || player1.stance == 3 && player2.stance == 2)
             {
                 if (tagsplayer1.Count > 0)
                     tagsplayer1.RemoveAt(tagsplayer1.Count - 1);
                 player2.hp -= (int)(player1.strenght * player1.strenghtcoef);
+                Anim_player2.GetComponent<PlayerAnimationController>().FireHit();
             }
             else if (player1.stance == 1 && player2.stance == 1 || player1.stance == 3 && player2.stance == 3)
             {
                 player1.hp -= (int)(player2.strenght * player2.strenghtcoef);
                 player2.hp -= (int)(player1.strenght * player1.strenghtcoef);
+                Anim_player1.GetComponent<PlayerAnimationController>().FireHit();
+                Anim_player2.GetComponent<PlayerAnimationController>().FireHit();
             }
             //La fonction pour update les barres de pv sera à appeler ici pour afficher les pv
             Debug.Log("J1 Hp : " + player1.hp + "\nJ2 Hp : " + player2.hp);
