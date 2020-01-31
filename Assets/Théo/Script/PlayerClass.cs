@@ -41,6 +41,7 @@ public class PlayerClass
     {
         stance = -1;
         strenghtcoef = 1;
+        strenght = 2;
         thornsup = false;
     }
 

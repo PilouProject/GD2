@@ -7,6 +7,7 @@ public class InterractionMenu : MonoBehaviour
     public GameObject MainMenu;
     public GameObject DeckMenu;
     public GameObject HUDinGame;
+    public GameObject HUDCArd;
     [Space]
     public AudioSource MenuMusic;
     public AudioSource InGameMusic;
@@ -18,6 +19,7 @@ public class InterractionMenu : MonoBehaviour
         MenuMusic.Stop();
         HUDinGame.SetActive(true);
         InGameMusic.Play();
+        HUDCArd.SetActive(true);
     }
 
     public void OnDeckMenuButton()

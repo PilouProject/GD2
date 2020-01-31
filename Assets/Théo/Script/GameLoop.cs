@@ -12,12 +12,18 @@ namespace CardFight
         PlayerClass player2;
         string player1action;
         string player2action;
+        bool j1inSuper;
+        bool j2inSuper;
         List<string> tagsplayer1;
         List<string> tagsplayer2;
         public bool playerTurn;
         public GameObject handObject;
         public GameObject Anim_player1;
         public GameObject Anim_player2;
+        public Slider hp_player1;
+        public Slider hp_player2;
+        public Slider super_player1;
+        public Slider super_player2;
 
         // Start is called before the first frame update
         void Start()
@@ -28,6 +34,8 @@ namespace CardFight
             tagsplayer2 = new List<string>();
             player1 = new PlayerClass();
             player2 = new PlayerClass();
+            j1inSuper = false;
+            j2inSuper = false;
             player1.init();
             player2.init();
             playerTurn = false;
@@ -47,47 +55,56 @@ namespace CardFight
                 case "knuckles":
                     attackPlayer.strenght += 4;
                     attackPlayer.stance = 1;
-                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
+                    if (attackPlayer.hand.Count != 0)
+                        attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "baseball":
                     attackPlayer.strenght += 6;
                     attackPlayer.stance = 1;
-                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
+                    if (attackPlayer.hand.Count != 0)
+                        attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "heal":
                     attackPlayer.hp += 3;
                     attackPlayer.stance = 2;
-                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
+                    if (attackPlayer.hand.Count != 0)
+                        attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "thorns":
                     attackPlayer.thornsup = true;
                     attackPlayer.stance = 2;
-                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
+                    if (attackPlayer.hand.Count != 0)
+                        attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "taunt":
                     attackPlayer.superBar -= 1;
                     attackPlayer.stance = 3;
-                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
+                    if (attackPlayer.hand.Count != 0)
+                        attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "remove":
                     defensePlayer.hand.RemoveAt(Random.Range(0, defensePlayer.hand.Count - 1));
                     attackPlayer.stance = 3;
-                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
+                    if (attackPlayer.hand.Count != 0)
+                        attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "weakness":
                     defenseTag.Add("weakness");
                     attackPlayer.stance = 3;
-                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
+                    if (attackPlayer.hand.Count != 0)
+                        attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "bite":
                     defenseTag.Add("bite");
                     attackPlayer.stance = 1;
-                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
+                    if (attackPlayer.hand.Count != 0)
+                        attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "enrage":
                     attackTag.Add("enrage");
                     attackPlayer.stance = 2;
-                    attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
+                    if (attackPlayer.hand.Count != 0)
+                        attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "stanceAttack":
                     attackPlayer.stance = 1;
@@ -99,6 +116,7 @@ namespace CardFight
                     attackPlayer.stance = 3;
                     break;
             }
+            Debug.Log(attackPlayer.strenght);
         }
         public void resolve()
         {
@@ -118,12 +136,25 @@ namespace CardFight
                     player1.hp -= (int)Mathf.Round(player1.strenght * player1.strenghtcoef / 2);
                     Anim_player1.GetComponent<PlayerAnimationController>().FireHit();
                 }
+                if (j2inSuper == true)
+                {
+                    player1.hp -= (int)(player2.strenght * player2.strenghtcoef);
+                    j2inSuper = false;
+                    super_player2.value = player2.superBar;
+                }
+                player2.superBar += 1;
             }
             else if (player1.stance == 3 && player2.stance == 1 || player1.stance == 2 && player2.stance == 3)
             {
                 if (tagsplayer2.Count > 0)
                     tagsplayer2.RemoveAt(tagsplayer2.Count - 1);
                 player1.hp -= (int)(player2.strenght * player2.strenghtcoef);
+                if (j1inSuper == true)
+                {
+                    j1inSuper = false;
+                    super_player1.value = player1.superBar;
+                }
+                 player2.superBar += 1;
                 Anim_player1.GetComponent<PlayerAnimationController>().FireHit();
             }
             else if (player1.stance == 2 && player2.stance == 1)
@@ -135,22 +166,51 @@ namespace CardFight
                     player2.hp -= (int)Mathf.Round(player2.strenght * player2.strenghtcoef / 2);
                     Anim_player2.GetComponent<PlayerAnimationController>().FireHit();
                 }
+                if (j1inSuper == true)
+                {
+                    player2.hp -= (int)(player1.strenght * player1.strenghtcoef);
+                    j1inSuper = false;
+                    super_player1.value = player1.superBar;
+                }
+                player1.superBar += 1;
             }
             else if (player1.stance == 1 && player2.stance == 3 || player1.stance == 3 && player2.stance == 2)
             {
                 if (tagsplayer1.Count > 0)
                     tagsplayer1.RemoveAt(tagsplayer1.Count - 1);
                 player2.hp -= (int)(player1.strenght * player1.strenghtcoef);
+                if (j1inSuper == true)
+                {
+                    j1inSuper = false;
+                    super_player1.value = player1.superBar;
+                }
+                player1.superBar += 1;
                 Anim_player2.GetComponent<PlayerAnimationController>().FireHit();
             }
             else if (player1.stance == 1 && player2.stance == 1 || player1.stance == 3 && player2.stance == 3)
             {
                 player1.hp -= (int)(player2.strenght * player2.strenghtcoef);
                 player2.hp -= (int)(player1.strenght * player1.strenghtcoef);
+                player1.superBar += 1;
+                player2.superBar += 1;
+                if (j1inSuper == true)
+                {
+                    j1inSuper = false;
+                    super_player1.value = player1.superBar;
+                }
+                if (j2inSuper == true)
+                {
+                    j2inSuper = false;
+                    super_player2.value = player2.superBar;
+                }
                 Anim_player1.GetComponent<PlayerAnimationController>().FireHit();
                 Anim_player2.GetComponent<PlayerAnimationController>().FireHit();
             }
             //La fonction pour update les barres de pv sera à appeler ici pour afficher les pv
+            hp_player1.value = 30 - player1.hp;
+            hp_player2.value = 30 - player2.hp;
+            super_player1.value = player1.superBar;
+            super_player2.value = player2.superBar;
             Debug.Log("J1 Hp : " + player1.hp + "\nJ2 Hp : " + player2.hp);
         }
 
@@ -175,9 +235,16 @@ namespace CardFight
                 tagsplayer2 = player2.status(tagsplayer2);
                 //On ajoute une carte dans la main du joueur en cours si en dessous de 5
                 if (player2.hand.Count < 5) { player2.addCard(); }
-                //On affiche les cartes du joueur en cours
                 handObject.GetComponent<HandHandler>().DestroyHand();
-                handObject.GetComponent<HandHandler>().InstantiateHand(player2.hand);
+                if (player2.superBar == 5)
+                {
+                    player2.strenght = 15;
+                    player2.superBar = 0;
+                    j2inSuper = true;
+                }
+                //On affiche les cartes du joueur en cours
+                else
+                    handObject.GetComponent<HandHandler>().InstantiateHand(player2.hand);
                 this.playerTurn = true;
 
             }
@@ -198,9 +265,16 @@ namespace CardFight
                 tagsplayer1 = player1.status(tagsplayer1);
                 //On ajoute une carte dans la main du joueur en cours si en dessous de 5
                 if (player1.hand.Count < 5) { player1.addCard(); }
-                //On affiche les cartes du joueur en cours
                 handObject.GetComponent<HandHandler>().DestroyHand();
-                handObject.GetComponent<HandHandler>().InstantiateHand(player1.hand);
+                if (player1.superBar == 5)
+                {
+                    player1.strenght = 15;
+                    player1.superBar = 0;
+                    j1inSuper = true;
+                }
+                //On affiche les cartes du joueur en cours
+                else
+                    handObject.GetComponent<HandHandler>().InstantiateHand(player1.hand);
                 playerTurn = false;
             }
         }
