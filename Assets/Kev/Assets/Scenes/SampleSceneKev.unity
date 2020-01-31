@@ -1115,7 +1115,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 774cf29abacda2648bb922075c5d53bd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d5085731b693094fa987dd7f5a306db, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1580,6 +1580,10 @@ MonoBehaviour:
   handObject: {fileID: 339416332}
   Anim_player1: {fileID: 327570339}
   Anim_player2: {fileID: 966977702}
+  hp_player1: {fileID: 0}
+  hp_player2: {fileID: 0}
+  super_player1: {fileID: 0}
+  super_player2: {fileID: 0}
 --- !u!4 &1745287255
 Transform:
   m_ObjectHideFlags: 0
