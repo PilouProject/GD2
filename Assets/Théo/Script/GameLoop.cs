@@ -24,6 +24,8 @@ namespace CardFight
         public Slider hp_player2;
         public Slider super_player1;
         public Slider super_player2;
+        public GameObject turnJ1;
+        public GameObject turnJ2;
 
         // Start is called before the first frame update
         void Start()
@@ -65,6 +67,8 @@ namespace CardFight
                     break;
                 case "heal":
                     attackPlayer.hp += 3;
+                    if (attackPlayer.hp > 30)
+                        attackPlayer.hp = 30;
                     attackPlayer.stance = 2;
                     if (attackPlayer.hand.Count != 0)
                         attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
@@ -247,6 +251,8 @@ namespace CardFight
                 //On ajoute une carte dans la main du joueur en cours si en dessous de 5
                 if (player2.hand.Count < 5) { player2.addCard(); }
                 handObject.GetComponent<HandHandler>().DestroyHand();
+                turnJ2.SetActive(true);
+                turnJ1.SetActive(false);
                 if (player2.superBar == 5)
                 {
                     player2.strenght = 15;
@@ -278,6 +284,8 @@ namespace CardFight
                 //On ajoute une carte dans la main du joueur en cours si en dessous de 5
                 if (player1.hand.Count < 5) { player1.addCard(); }
                 handObject.GetComponent<HandHandler>().DestroyHand();
+                turnJ1.SetActive(true);
+                turnJ2.SetActive(false);
                 if (player1.superBar == 5)
                 {
                     player1.strenght = 15;
