@@ -4351,6 +4351,7 @@ MonoBehaviour:
   MainMenu: {fileID: 419916439}
   DeckMenu: {fileID: 574078490}
   HUDinGame: {fileID: 1986046746}
+  HUDCArd: {fileID: 0}
   MenuMusic: {fileID: 986662903}
   InGameMusic: {fileID: 1059980710}
 --- !u!1 &1841637997
@@ -5096,7 +5097,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 5
   m_WholeNumbers: 1
-  m_Value: 4
+  m_Value: 5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
