@@ -16,8 +16,11 @@ public class PlayerClass
     public void addCard()
     {
         int j = Random.Range(0, deck.Count - 1);
-        hand.Add(deck[j]);
-        deck.RemoveAt(j);
+        if (deck.Count > 0)
+        {
+            hand.Add(deck[j]);
+            deck.RemoveAt(j);
+        }
     }
 
     public void init()
@@ -63,6 +66,12 @@ public class PlayerClass
                     break;
                 case "weakness":
                     strenghtcoef = 0.5f;
+                    break;
+                case "taunt":
+                    superBar -= 1;
+                    break;
+                case "remove":
+                    hand.RemoveAt(Random.Range(0, hand.Count - 1));
                     break;
             }
             tags.RemoveAt(i);

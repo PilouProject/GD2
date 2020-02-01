@@ -41,7 +41,6 @@ namespace CardFight
             playerTurn = false;
             if (player1.hand.Count < 5) { player1.addCard(); }
             handObject.GetComponent<HandHandler>().InstantiateHand(player1.hand);
-            Debug.Log("Beginning");
         }
 
         public void switchAction(string playeraction, PlayerClass attackPlayer, PlayerClass defensePlayer, List<string> attackTag, List<string> defenseTag)
@@ -77,13 +76,13 @@ namespace CardFight
                         attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "taunt":
-                    attackPlayer.superBar -= 1;
+                    defenseTag.Add("taunt");
                     attackPlayer.stance = 3;
                     if (attackPlayer.hand.Count != 0)
                         attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
                     break;
                 case "remove":
-                    defensePlayer.hand.RemoveAt(Random.Range(0, defensePlayer.hand.Count - 1));
+                    defenseTag.Add("remove");
                     attackPlayer.stance = 3;
                     if (attackPlayer.hand.Count != 0)
                         attackPlayer.hand.RemoveAt(attackPlayer.hand.IndexOf(playeraction));
@@ -206,12 +205,24 @@ namespace CardFight
                 Anim_player1.GetComponent<PlayerAnimationController>().FireHit();
                 Anim_player2.GetComponent<PlayerAnimationController>().FireHit();
             }
+            if (player1.stance == 2 && player2.stance == 2)
+            {
+                player1.superBar += 1;
+                player2.superBar += 1;
+                if (j1inSuper == true)
+                {
+                    j1inSuper = false;
+                }
+                if (j2inSuper == true)
+                {
+                    j2inSuper = false;
+                }
+            }
             //La fonction pour update les barres de pv sera à appeler ici pour afficher les pv
             hp_player1.value = 30 - player1.hp;
             hp_player2.value = 30 - player2.hp;
             super_player1.value = player1.superBar;
             super_player2.value = player2.superBar;
-            Debug.Log("J1 Hp : " + player1.hp + "\nJ2 Hp : " + player2.hp);
         }
 
         public void handleCard()
@@ -221,7 +232,6 @@ namespace CardFight
                 player1action = EventSystem.current.currentSelectedGameObject.name;
             else
                 player2action = EventSystem.current.currentSelectedGameObject.name;
-            Debug.Log(" Player Action J1 : " + player1action + "\nPlayer Action J2 : " + player2action);
         }
 
         public void handleNext()
@@ -230,9 +240,10 @@ namespace CardFight
             if (playerTurn == false)
             {
                 //On passe au joueur 2
-                Debug.Log("Turn 2 player");
                 //On applique les status du joueur type faiblesse,ect... (elle sont dans playerClass)
                 tagsplayer2 = player2.status(tagsplayer2);
+                super_player2.value = player2.superBar;
+                hp_player2.value = 30 - player2.hp;
                 //On ajoute une carte dans la main du joueur en cours si en dessous de 5
                 if (player2.hand.Count < 5) { player2.addCard(); }
                 handObject.GetComponent<HandHandler>().DestroyHand();
@@ -257,12 +268,13 @@ namespace CardFight
                 //    victoryScreen(J1);
                 //else if (player1.hp <= 0)
                 //     victoryScreen(J2);
-                Debug.Log("Turn 1 player");
                 //On reset les stats des joueurs type force
                 player1.resetStat();
                 player2.resetStat();
                 //On applique les status du joueur type faiblesse,ect... (elle sont dans playerClass)
                 tagsplayer1 = player1.status(tagsplayer1);
+                super_player1.value = player1.superBar;
+                hp_player1.value = 30 - player1.hp;
                 //On ajoute une carte dans la main du joueur en cours si en dessous de 5
                 if (player1.hand.Count < 5) { player1.addCard(); }
                 handObject.GetComponent<HandHandler>().DestroyHand();
