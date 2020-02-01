@@ -59,4 +59,8 @@ public class PlayerAnimationController : MonoBehaviour
         m_animator.SetTrigger("defense");
     }
 
+    public void FireVictory()
+    {
+        m_animator.SetBool("victory", true);
+    }
 }
