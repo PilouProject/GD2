@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class EndGame : MonoBehaviour
 {
     int i;
+    int j;
     public Slider HpJ1;
     public Slider HpJ2;
     public GameObject BackgroundJ1;
@@ -17,38 +18,64 @@ public class EndGame : MonoBehaviour
     public GameObject HUDCanva;
     public GameObject HUDendGame;
     public GameObject PlayersSprite;
+    public GameObject Player1;
+    public GameObject Player2;
+    float time;
 
 
     private void Start()
     {
         i = 0;
+        j = 0;
+        time = 6;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (HpJ1.value >= 30 && i == 0)
+        if (HpJ1.value >= 30)
         {
-            i = 1;
-            BackgroundJ2.SetActive(true);
-            PlayersSprite.SetActive(false);
             InGameMusic.Stop();
-            EndGameMusic.Play();
-            HUD.SetActive(false);
-            HUDCanva.SetActive(false);
-            HUDendGame.SetActive(true);
+            if (j == 0)
+            {
+                j = 1;
+                Player1.GetComponent<PlayerAnimationController>().FireDeath();
+            }
+            if (time <= 3 && j == 1)
+                Player2.GetComponent<PlayerAnimationController>().FireVictory();
+            time -= Time.deltaTime;
+            if (time <= 0 && i == 0)
+            {
+                i = 1;
+                BackgroundJ2.SetActive(true);
+                PlayersSprite.SetActive(false);
+                EndGameMusic.Play();
+                HUD.SetActive(false);
+                HUDCanva.SetActive(false);
+                HUDendGame.SetActive(true);
+            }
         }
-
-        if (HpJ2.value >= 30 && i == 0)
+        else if (HpJ2.value >= 30)
         {
-            i = 1;
-            BackgroundJ1.SetActive(true);
-            PlayersSprite.SetActive(false);
             InGameMusic.Stop();
-            EndGameMusic.Play();
-            HUD.SetActive(false);
-            HUDCanva.SetActive(false);
-            HUDendGame.SetActive(true);
+            if (j == 0)
+            {
+                j = 1;
+                Player2.GetComponent<PlayerAnimationController>().FireDeath();
+            }
+            if (time <= 3 && j == 1)
+                Player1.GetComponent<PlayerAnimationController>().FireVictory();
+            time -= Time.deltaTime;
+            if (time <= 0 && i == 0)
+            {
+                i = 1;
+                BackgroundJ1.SetActive(true);
+                PlayersSprite.SetActive(false);
+                EndGameMusic.Play();
+                HUD.SetActive(false);
+                HUDCanva.SetActive(false);
+                HUDendGame.SetActive(true);
+            }
         }
     }
 

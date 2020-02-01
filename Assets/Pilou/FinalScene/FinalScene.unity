@@ -1972,8 +1972,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517433968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.025, z: 9}
-  m_LocalScale: {x: 1.3625125, y: 0.99016213, z: 1.0558379}
+  m_LocalPosition: {x: 0, y: 0.3, z: 9}
+  m_LocalScale: {x: 1.4578884, y: 1.0594735, z: 1.1297466}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -2265,7 +2265,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599525387}
   m_LocalRotation: {x: -0, y: -0, z: -0.7068304, w: 0.70738304}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 79.93748, y: 91.07, z: 40}
   m_Children: []
   m_Father: {fileID: 318277376}
@@ -2687,8 +2687,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707445767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.025, z: 9}
-  m_LocalScale: {x: 1.3625125, y: 0.99016213, z: 1.0558379}
+  m_LocalPosition: {x: 0, y: 0.3, z: 9}
+  m_LocalScale: {x: 1.4578884, y: 1.0594735, z: 1.1297466}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -5359,6 +5359,8 @@ MonoBehaviour:
   HUDCanva: {fileID: 1567014177}
   HUDendGame: {fileID: 1578889996}
   PlayersSprite: {fileID: 82930274}
+  Player1: {fileID: 327570339}
+  Player2: {fileID: 966977702}
 --- !u!1 &1811072970
 GameObject:
   m_ObjectHideFlags: 0
