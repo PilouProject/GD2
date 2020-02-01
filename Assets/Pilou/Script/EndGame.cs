@@ -14,6 +14,8 @@ public class EndGame : MonoBehaviour
     public GameObject BackgroundJ2;
     public AudioSource InGameMusic;
     public AudioSource EndGameMusic;
+    public AudioSource DeathSound;
+    public AudioSource WinSound;
     public GameObject HUD;
     public GameObject HUDCanva;
     public GameObject HUDendGame;
@@ -40,9 +42,13 @@ public class EndGame : MonoBehaviour
             {
                 j = 1;
                 Player1.GetComponent<PlayerAnimationController>().FireDeath();
+                DeathSound.Play();
             }
             if (time <= 3 && j == 1)
+            {
                 Player2.GetComponent<PlayerAnimationController>().FireVictory();
+                WinSound.Play();
+            }
             time -= Time.deltaTime;
             if (time <= 0 && i == 0)
             {
@@ -62,9 +68,13 @@ public class EndGame : MonoBehaviour
             {
                 j = 1;
                 Player2.GetComponent<PlayerAnimationController>().FireDeath();
+                DeathSound.Play();
             }
             if (time <= 3 && j == 1)
+            {
                 Player1.GetComponent<PlayerAnimationController>().FireVictory();
+                WinSound.Play();
+            }
             time -= Time.deltaTime;
             if (time <= 0 && i == 0)
             {
