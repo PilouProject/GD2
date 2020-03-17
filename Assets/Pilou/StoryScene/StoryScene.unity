@@ -591,6 +591,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 348098625}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &504379304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6916705741361569505, guid: 26f3b0d7aff6be04d98f9b8821ff626d,
+    type: 3}
+  m_PrefabInstance: {fileID: 348098625}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1068134088
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,6 +819,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3883c255a5a0b34d95e67f3a4906325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ryu: {fileID: 504379304}
+  Ken: {fileID: 1632227462}
+  RyuText: {fileID: 1270879209}
 --- !u!95 &1264938814
 Animator:
   serializedVersion: 3
@@ -912,6 +921,12 @@ CanvasRenderer:
 --- !u!4 &1399161516 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6753657746995331636, guid: 26f3b0d7aff6be04d98f9b8821ff626d,
+    type: 3}
+  m_PrefabInstance: {fileID: 348098625}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1632227462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3400481670534510629, guid: 26f3b0d7aff6be04d98f9b8821ff626d,
     type: 3}
   m_PrefabInstance: {fileID: 348098625}
   m_PrefabAsset: {fileID: 0}
