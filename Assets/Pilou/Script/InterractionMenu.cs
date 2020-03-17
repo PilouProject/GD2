@@ -1,17 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InterractionMenu : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject DeckMenu;
     public GameObject HUDinGame;
-    public GameObject HUDCArd;
+    public GameObject HUDCArd;  
     [Space]
     public AudioSource MenuMusic;
     public AudioSource InGameMusic;
+    // public AudioSource StoryMusic;
 
+    public void OnStoryButton()
+    {                       
+        Debug.Log("Story");
+        SceneManager.LoadScene("Assets/Pilou/StoryScene/StoryScene.unity");
+        //Application.Quit();
+
+    }
 
     public void OnStartButton()
     {

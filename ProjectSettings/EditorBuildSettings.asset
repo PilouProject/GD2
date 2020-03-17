@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/xAllScenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Pilou/FinalScene/FinalScene.unity
+    guid: 3cd619bf924815a438fa9866e79455ee
+  - enabled: 1
+    path: Assets/Pilou/FinalScene/StoryScene.unity
+    guid: d190f832955b68f44b879f720eafd78e
   m_configObjects: {}
